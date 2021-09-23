@@ -13,3 +13,6 @@ C:\Users\Admin\source\repos\MovieShop\Infrastructure\obj\Debug\net5.0\Infrastruc
 C:\Users\Admin\source\repos\MovieShop\Infrastructure\bin\Debug\net5.0\ApplicationCore.dll
 C:\Users\Admin\source\repos\MovieShop\Infrastructure\bin\Debug\net5.0\ApplicationCore.pdb
 C:\Users\Admin\source\repos\MovieShop\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+C:\Users\Admin\source\repos\MovieShop\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+C:\Users\Admin\source\repos\MovieShop\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
+C:\Users\Admin\source\repos\MovieShop\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache

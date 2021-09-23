@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lLX4WZ7Z/DMEBHUyotiJ5Sjd8q4f7zJwwN3+tWGmObtUNQGSSDnsWJX394G+jZLUXuLxSxH6YGfVrvqLA8CHyQ==",
+  "dgSpecHash": "ixdI1M6l0SxEf4uxaMIotQE8ufLOOQt4GYVDF1ineH7vIJuAnHHRRmgMymkpz93ulL+R/l7tWBF17Genus8IeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\MovieShop\\ApplicationCore\\ApplicationCore.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
