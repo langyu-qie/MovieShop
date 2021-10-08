@@ -12,7 +12,8 @@ namespace ApplicationCore.Models
         public string PosterUrl { get; set; }
         public string Title { get; set; }
 
-        public int Revenue { get; set; }
+        public decimal? Revenue { get; set; }
+ 
 
     }
 }

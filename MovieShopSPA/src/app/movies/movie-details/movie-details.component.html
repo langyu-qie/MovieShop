@@ -1,0 +1,143 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="rounded" style="padding-top: 5px">
+    <div class="container-fluid">
+        <div class="row" style=" background-image: linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5)  ), url( {{movie.backdropUrl}} )">
+            <div class="col-4">
+
+                <img src="{{movie.posterUrl}}" class="img-fluid" alt="{{movie.title}}" />
+            </div>
+            <div class="col-6">
+                <ul style="list-style-type:none">
+                    <li>
+                        <h2 style="color:white">{{movie.title}}</h2>
+                    </li>
+                    <li>
+                        <span style="color:gray">{{movie.tagline}}</span>
+                    </li>
+                    <li class="justify-content-between " style="color:gray; font:bold" >
+                      
+    
+                            {{movie.runTime}} m | {{movie.releaseDate}}
+
+                            <ul style ="list-style-type: none">
+                            
+                                <li style="display: inline" *ngFor="let genre of movie.genres" >   
+                                    <span class="badge badge-secondary">{{genre.name}}</span>  
+                                </li>
+
+                            </ul>
+                             
+                      
+
+                    </li>
+                    <li>
+                        <span class="badge badge-warning">{{movie.rating}}</span>
+
+                    </li>
+                    <li>
+                        <p style="color:white">
+                            {{movie.overview}}
+                        </p>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="col-2">
+                <ul style="list-style-type:none ; padding-top: 100px">
+                    <li>
+                        <button type="button" class="btn btn-outline-light btn-block"><i class="far fa-edit"></i>Review</button>
+                    </li>
+                    <li style="padding-top: 20px">
+                        <button type="button" class="btn btn-outline-light btn-block">BUY ${{movie.price}}</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:10px">
+            <div class="col-4">
+                <div class="container-fluid" >
+
+                    <div >
+                        <h3 style="text-align:left">MOVIE FACTS</h3>
+
+
+                        <ul class="list-group list-group-flush">
+                            
+                            <li class="list-group-item" >
+                                <i class="far fa-calendar-alt"></i>&nbsp;Release Date  <span class="badge badge-dark badge-pill">{{movie.releaseDate}}</span>
+                            </li>
+                            <li class="list-group-item" >
+                                <i class="fas fa-hourglass-half"></i>&nbsp;Run Time  <span class="badge badge-dark badge-pill">{{movie.runTime}} m</span>
+                            </li>
+                            <li class="list-group-item" >
+                                <i class="far fa-money-bill-alt"></i>&nbsp;Box Office  <span class="badge badge-dark badge-pill">${{movie.revenue}}</span>
+                            </li>
+                            <li class="list-group-item" >
+                                <i class="fas fa-dollar-sign"></i>&nbsp;Budget  <span class="badge badge-dark badge-pill">${{movie.budget}}</span>
+                            </li>
+                            <li class="list-group-item" >
+
+
+                                <i class="fab fa-imdb"></i>&nbsp;
+                                <i class="fas fa-share-square"></i>
+
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div >
+                        <h3 style="text-align:left">TRAILERS</h3>
+                        <ul class="list-group list-group-flush">
+                            
+                                <li class="list-group-item" *ngFor="let trailer of movie.trailers">
+                                    <a href="{{trailer.trailerUrl}}" style="color:black">
+                                        <p><i class="fab fa-youtube"></i>&nbsp;{{trailer.name}}</p>
+                                    </a> 
+                                </li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                <h3 style="text-align:left">CAST</h3>
+                <ul ul class="list-group list-group-flush">
+                    
+                        <li class="list-group-item " *ngFor="let cast of movie.casts">  
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="{{cast.profilePath}}" class="d-inline rounded-circle" width="50" height="73">
+                                </div>
+                                <div class="col-5" style="font-weight:500">
+                                    <span>{{cast.name}}</span>
+                                </div>
+                                <div class="col-5" style="font-weight:500">
+                                    <span>{{cast.character}}</span>
+                                </div>
+                            </div>
+ 
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <div class="col-2">
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</div>
+

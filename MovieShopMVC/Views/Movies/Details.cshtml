@@ -1,0 +1,165 @@
+﻿@model ApplicationCore.Models.MovieDetailsModel
+
+
+@{ ViewData["Title"] = "MovieDetails"; }
+
+@using System.Globalization;
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="rounded" style="padding-top: 5px ">
+
+    <div class="container-fluid">
+
+        <div class="row" style=" background-image: linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url( @Model.BackdropUrl )">
+            <div class="col-4">
+
+                <img src="@Model.PosterUrl" class="img-fluid" alt="@Model.Title" />
+            </div>
+            <div class="col-6">
+                <ul style="list-style-type:none">
+                    <li>
+                        <h2 style="color:white">@Model.Title</h2>
+                    </li>
+                    <li>
+                        <span style="color:gray">@Model.Tagline</span>
+                    </li>
+                    <li class="justify-content-between " style="color:gray; font:bold">
+                      
+                            @Model.RunTime m | @Model.ReleaseDate.GetValueOrDefault().Year
+                            @*@foreach (var genre in Model.Genres)
+                                {
+                                    <span class="badge badge-secondary">genre</span>
+                                }*@
+            
+                        
+                            @foreach (var genre in Model.Genres)
+                            {
+                            <span class="badge badge-secondary">@genre.Name</span>
+                            }
+
+                    </li>
+                    <li>
+                        <span class="badge badge-warning">@Math.Round(Model.Rating.GetValueOrDefault(), 1)</span>
+
+                    </li>
+                    <li>
+                        <p style="color:white">
+                            @Model.Overview
+                        </p>
+                    </li>
+
+
+                </ul>
+
+
+
+
+            </div>
+            <div class="col-2">
+                <ul style="list-style-type:none ; padding-top: 100px">
+                    <li>
+                        <button type="button" class="btn btn-outline-light btn-block"><i class="far fa-edit"></i>Review</button>
+                    </li>
+                    <li style="padding-top: 20px">
+                        <button type="button" class="btn btn-outline-light btn-block">BUY $@Model.Price</button>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:10px">
+            <div class="col-4">
+                <div class="container-fluid" >
+
+                    <div >
+                        <h3 style="text-align:left">MOVIE FACTS</h3>
+
+
+                        <ul class="list-group list-group-flush">
+                            
+                            <li class="list-group-item" >
+                                <i class="far fa-calendar-alt"></i>&nbsp;Release Date  <span class="badge badge-dark badge-pill">@Model.ReleaseDate.GetValueOrDefault().ToString("MMMM dd, yyyy")</span>
+                            </li>
+                            <li class="list-group-item" >
+                                <i class="fas fa-hourglass-half"></i>&nbsp;Run Time  <span class="badge badge-dark badge-pill">@Model.RunTime m</span>
+                            </li>
+                            <li class="list-group-item" >
+                                <i class="far fa-money-bill-alt"></i>&nbsp;Box Office  <span class="badge badge-dark badge-pill">$@Model.Revenue.GetValueOrDefault().ToString("N", CultureInfo.InvariantCulture)</span>
+                            </li>
+                            <li class="list-group-item" >
+                                <i class="fas fa-dollar-sign"></i>&nbsp;Budget  <span class="badge badge-dark badge-pill">$@Model.Budget.GetValueOrDefault().ToString("N", CultureInfo.InvariantCulture)</span>
+                            </li>
+                            <li class="list-group-item" >
+
+
+                                <i class="fab fa-imdb"></i>&nbsp;
+                                <i class="fas fa-share-square"></i>
+
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div >
+                        <h3 style="text-align:left">TRAILERS</h3>
+                        <ul class="list-group list-group-flush">
+                            
+
+                            @foreach (var trailer in Model.Trailers)
+                            {
+                                <li class="list-group-item"><a href="@trailer.TrailerUrl" style="color:black"><p><i class="fab fa-youtube"></i>&nbsp;@trailer.Name</p></a> </li>
+                            }
+                           
+
+                        </ul>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                <h3 style="text-align:left">CAST</h3>
+                <ul ul class="list-group list-group-flush">
+                    
+                    @foreach(var cast in Model.Casts)
+                    {
+                        <li class="list-group-item ">  
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="@cast.ProfilePath" class="d-inline rounded-circle" width="50" height="73">
+                                </div>
+                                <div class="col-5" style="font-weight:500">
+                                    <span>@cast.Name</span>
+                                </div>
+                                <div class="col-5" style="font-weight:500">
+                                    <span>@cast.Character</span>
+                                </div>
+                            </div>
+ 
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <div class="col-2">
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+</div>

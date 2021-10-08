@@ -1,0 +1,16 @@
+﻿@model ApplicationCore.Models.UserDetailResponseModel
+
+@{ ViewData["Title"] = "UserDetails"; }
+
+<p>
+    <ul style="list-style-type:none">
+        <li> FirstName : @Model.FirstName  </li>
+        <li> LastName : @Model.LastName   </li>
+        <li>  Email: @Model.Email             </li>
+        <li>   DateOfBirth : @Model.DateOfBirth </li>
+        <li> Phone Number : @Model.PhoneNumber</li>
+    </ul>
+</p>
+<p>
+    <a class="btn btn-secondary" asp-controller="User" asp-action="Edit" asp-route-id="@Model.Id "> Edit </a>
+</p>

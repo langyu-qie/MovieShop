@@ -15,11 +15,33 @@ namespace MovieShopMVC.Controllers
         {
             _movieService = movieService;
         }
-        public IActionResult GetTopRevenueMovies()
+        public async Task<IActionResult> GetTopRevenueMovies()
         {
-            var movies = _movieService.Get30HighestGrossingMovies();
+            var movies =await _movieService.Get30HighestGrossingMovies();
             return View(movies);
 
         }
+
+      
+        //public IActionResult GetMovieByGenre(int genreId)
+        //{
+
+        //    var movies = _movieService.GetMovieByGenre(genreId);
+        //    return View(movies);
+
+        //}
+
+
+        public async Task<IActionResult> Details(int Id)
+        {
+
+            var moviedetails =await _movieService.MovieDetailsById(Id);
+
+            return View(moviedetails);
+
+        }
+
+
+
     }
 }
