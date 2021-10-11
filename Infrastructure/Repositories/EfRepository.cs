@@ -48,6 +48,13 @@ namespace Infrastructure.Repositories
             return await _dbContext.Set<T>().CountAsync();
         }
 
+        public virtual async Task<bool> GetExistsAsync(Expression<Func<T, bool>> filter = null)
+        {
+            if (filter == null) return false;
+            return await _dbContext.Set<T>().Where(filter).AnyAsync();
+        }
+
+
         public virtual async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);

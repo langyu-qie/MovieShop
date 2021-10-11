@@ -13,13 +13,13 @@ namespace MovieShopMVC.Controllers
     {
         private readonly IUserService _userService;
         private readonly ICurrentUserService _currentUserService;
+        private readonly IMovieService _movieService;
 
-
-        public UserController(IUserService userService, ICurrentUserService currentUserService)
+        public UserController(IUserService userService, ICurrentUserService currentUserService, IMovieService movieService)
         {
             _userService = userService;
             _currentUserService = currentUserService;
-
+            _movieService = movieService;
         }
 
         // showing list of movies user purchased
@@ -33,6 +33,27 @@ namespace MovieShopMVC.Controllers
             // call the User Service to get movies purchased by user, and send the data to the view, and use the existing MovieCard partial View
             return View(purchases);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> BuyMovie(int id)
+        {
+            var movie = await _movieService.MovieDetailsById(id);
+            return View(movie);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BuyMovie(PurchaseRequestModel purchase)
+        {
+            await _userService.PurchaseMovie(purchase, _currentUserService.UserId);
+            return Ok();
+        }
+
+
+
+
+
+
+
 
         [HttpGet]
         [Authorize]

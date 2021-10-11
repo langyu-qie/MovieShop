@@ -17,10 +17,13 @@ namespace ApplicationCore.ServiceInterfaces
 
         Task<MovieDetailsModel> MovieDetailsById(int Id);
 
-        //Task<PagedResultSet<MovieCardResponseModel>> GetMoviesByPagination(int pageSize = 30, int page = 1, string title = "");
+        Task<PagedResultSet<MovieCardResponseModel>> GetMoviesByPagination(int pageSize = 30, int page = 1, string title = "");
 
         Task<PagedResultSet<MovieCardResponseModel>> GetMoviesByGenre(int genreId, int pageSize = 30, int pageIndex = 1);
 
+
+        Task<IEnumerable<MovieCardResponseModel>> GetTopRatedMovies();
+        Task<IEnumerable<MovieReviewResponseModel>> GetReviewsForMovie(int id, int pageSize = 30, int pageIndex = 1);
 
     }
 }

@@ -22,6 +22,9 @@ namespace ApplicationCore.RepositoryInterfaces
         Task<T> UpdateAsync(T entity);
         Task DeleteAsync(T entity);
 
+        Task<bool> GetExistsAsync(Expression<Func<T, bool>> filter = null);
+
+
         Task<PaginatedList<T>> GetPagedData(int pageIndex, int pageSize,
     Func<IQueryable<T>, IOrderedQueryable<T>> orderedQuery = null,
     Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] includes);

@@ -42,20 +42,24 @@ namespace Infrastructure.Services
             return moviesCardResponseModel;
         }
 
-        //public async Task<PagedResultSet<MovieCardResponseModel>> GetMoviesByPagination(
-        //     int pageSize = 20, int pageIndex = 0, string title = "")
-        //{
-        //    Expression<Func<Movie, bool>> filterExpression = null;
-        //    if (!string.IsNullOrEmpty(title)) filterExpression = movie => title != null && movie.Title.Contains(title);
+        public async Task<PagedResultSet<MovieCardResponseModel>> GetMoviesByPagination(
+             int pageSize = 20, int pageIndex = 0, string title = "")
+        {
+            Expression<Func<Movie, bool>> filterExpression = null;
+            if (!string.IsNullOrEmpty(title)) filterExpression = movie => title != null && movie.Title.Contains(title);
 
-        //    var pagedMovies = await _movieRepository.GetPagedData(pageIndex, pageSize, mov => mov.OrderBy(m => m.Title),
-        //        filterExpression);
-        //    var movies =
-        //        new PagedResultSet<MovieCardResponseModel>(_mapper.Map<List<MovieCardResponseModel>>(pagedMovies),
-        //            pagedMovies.PageIndex,
-        //            pageSize, pagedMovies.TotalCount);
-        //    return movies;
-        //}
+            var pagedMovies = await _movieRepository.GetPagedData(pageIndex, pageSize, mov => mov.OrderBy(m => m.Title),
+                filterExpression);
+            var lstOfMovieCards = new List<MovieCardResponseModel>();
+            foreach (var movie in pagedMovies)
+                lstOfMovieCards.Add(new MovieCardResponseModel { Id = movie.Id, PosterUrl = movie.PosterUrl });
+            var movies =
+                new PagedResultSet<MovieCardResponseModel>(
+                    lstOfMovieCards,
+                    pagedMovies.PageIndex,
+                    pageSize, pagedMovies.TotalCount);
+            return movies;
+        }
 
 
         public async Task<PagedResultSet<MovieCardResponseModel>> GetMoviesByGenre(int genreId, int pageSize = 30,
@@ -128,6 +132,35 @@ namespace Infrastructure.Services
             return movieDetails;
 
 
+        }
+
+        public async Task<IEnumerable<MovieCardResponseModel>> GetTopRatedMovies()
+        {
+            var topMovies = await _movieRepository.GetTopRatedMovies();
+            var moviesCardResponseModel = new List<MovieCardResponseModel>();
+
+            // mapping entites to models data so that services always return models mot entites
+            foreach (var movie in topMovies)
+                moviesCardResponseModel.Add(new MovieCardResponseModel { Id = movie.Id, PosterUrl = movie.PosterUrl, Rating = movie.Rating});
+
+            // return list of movieresponse models
+
+            return moviesCardResponseModel;
+        }
+
+        public async Task<IEnumerable<MovieReviewResponseModel>> GetReviewsForMovie(int id, int pageSize = 25,
+    int page = 1)
+        {
+            var reviews = await _movieRepository.GetMovieReviews(id, pageSize, page);
+            var reviewsMovieModel = reviews.Select(r => new MovieReviewResponseModel
+            {
+                MovieId = r.MovieId,
+                Rating = r.Rating,
+                ReviewText = r.ReviewText,
+                UserId = r.UserId,
+                Name = r.User.FirstName + " " + r.User.LastName
+            });
+            return reviewsMovieModel;
         }
 
 

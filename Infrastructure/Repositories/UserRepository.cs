@@ -22,6 +22,14 @@ namespace Infrastructure.Repositories
             return user;
         }
 
+
+        public async Task<IEnumerable<Review>> GetReviewsByUser(int userId)
+        {
+            var reviews = await _dbContext.Reviews.Include(r => r.Movie).Where(r => r.UserId == userId).ToListAsync();
+            return reviews;
+        }
+
+
         public override async Task<User> GetByIdAsync(int id)
         {
             var user = await _dbContext.Users.Include(u=>u.Favorites).Include(u=>u.Purchases).Include(u=>u.Reviews).FirstOrDefaultAsync(u => u.Id == id);

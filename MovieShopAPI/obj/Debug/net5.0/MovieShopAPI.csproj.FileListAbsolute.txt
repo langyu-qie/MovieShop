@@ -22,7 +22,6 @@ C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Microsoft.Id
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -64,3 +63,5 @@ C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\obj\Debug\net5.0\ref\MovieSho
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\obj\Debug\net5.0\MovieShopAPI.pdb
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\obj\Debug\net5.0\MovieShopAPI.genruntimeconfig.cache
 C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Admin\source\repos\MovieShop\MovieShopAPI\bin\Debug\net5.0\Dapper.dll

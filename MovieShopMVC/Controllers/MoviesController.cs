@@ -22,14 +22,12 @@ namespace MovieShopMVC.Controllers
 
         }
 
-      
-        //public IActionResult GetMovieByGenre(int genreId)
-        //{
 
-        //    var movies = _movieService.GetMovieByGenre(genreId);
-        //    return View(movies);
-
-        //}
+        public async Task<IActionResult> Genre(int id, int pageSize = 30, int pageNumber = 1)
+        {
+            var movies = await _movieService.GetMoviesByGenre(id, pageSize, pageNumber);
+            return View("PagedIndex", movies);
+        }
 
 
         public async Task<IActionResult> Details(int Id)

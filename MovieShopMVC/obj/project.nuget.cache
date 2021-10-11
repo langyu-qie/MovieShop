@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "14Qe+tF+u4UCXw0hsrtrNbA0THoH+8TuxCLZoY9m+zGnqkyuU3pVUzV3HDnHLQzPbZfuWGj8QIlhPlwzTiq0mQ==",
+  "dgSpecHash": "N4pG8z1Q38qsAFCEpLNdx8Fa5eOVFaUbbfR5i19eBihIh1lGyJkNX+m1peAJqT0gkeTzaP6f7vhu8zwHWdfX9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\MovieShop\\MovieShopMVC\\MovieShopMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.10\\microsoft.aspnetcore.cryptography.internal.5.0.10.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.10\\microsoft.aspnetcore.cryptography.keyderivation.5.0.10.nupkg.sha512",

@@ -57,16 +57,31 @@
 
             </div>
             <div class="col-2">
-                <ul style="list-style-type:none ; padding-top: 100px">
-                    <li>
-                        <button type="button" class="btn btn-outline-light btn-block"><i class="far fa-edit"></i>Review</button>
+                <ul class="list-group" style="list-style-type: none; padding-top: 100px ">
+
+
+                    <li class="list-group-item">
+                        <button type="button"
+                                class="btn btn-outline-light btn-lg btn-block btn-sm ">
+                            <i class="far fa-edit mr-1"></i>
+                            REVIEW
+                        </button>
                     </li>
-                    <li style="padding-top: 20px">
-                        <button type="button" class="btn btn-outline-light btn-block">BUY $@Model.Price</button>
+                    <li class="list-group-item">
+                        <a class="btn btn-light btn-lg btn-block btn-sm" asp-route-id="@Model.Id" asp-controller="User" asp-action="BuyMovie">
+                            BUY @Model.Price
+                        </a>
+
+                        <a class="btn btn-light btn-lg btn-block btn-sm" asp-route-id="@Model.Id" asp-controller="User" asp-action="BuyMovie">
+                            WATCH MOVIE
+                        </a>
                     </li>
+
 
 
                 </ul>
+
+                
             </div>
         </div>
 
@@ -161,5 +176,4 @@
 
     </div>
 
-</div>
 </div>

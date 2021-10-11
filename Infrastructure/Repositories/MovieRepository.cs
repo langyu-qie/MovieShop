@@ -49,6 +49,35 @@ namespace Infrastructure.Repositories
             return new PagedResultSet<Movie>(movies, pageIndex, pageSize, totalMoviesCountByGenre);
         }
 
+
+        public async Task<IEnumerable<Review>> GetMovieReviews(int id, int pageSize = 25, int page = 1)
+        {
+            var reviews = await _dbContext.Reviews.Where(r => r.MovieId == id).Include(r => r.User)
+                .Select(r => new Review
+                {
+                    UserId = r.UserId,
+                    Rating = r.Rating,
+                    MovieId = r.MovieId,
+                    ReviewText = r.ReviewText,
+                    Movie = new Movie
+                    {
+                        Id = r.Movie.Id,
+                        Title = r.Movie.Title
+                    },
+                    User = new User
+                    {
+                        Id = r.UserId,
+                        FirstName = r.User.FirstName,
+                        LastName = r.User.LastName
+                    }
+                }).Skip(pageSize * (page - 1)).Take(pageSize).ToListAsync();
+            return reviews;
+        }
+
+
+
+
+
         public override async Task<Movie> GetByIdAsync(int Id)
         {
             var moviedetails = await _dbContext.Movies.Include(m => m.Genres).ThenInclude(m => m.Genre)
@@ -66,7 +95,30 @@ namespace Infrastructure.Repositories
 
         }
 
+        public async Task<IEnumerable<Movie>> GetTopRatedMovies()
+        {
+            var topRatedMovies = await _dbContext.Reviews.Include(m => m.Movie)
+                .GroupBy(r => new
+                {
+                    Id = r.MovieId,
+                    r.Movie.PosterUrl,
+                    r.Movie.Title,
+                    r.Movie.ReleaseDate
+                })
+                .OrderByDescending(g => g.Average(m => m.Rating))
+                .Select(m => new Movie
+                {
+                    Id = m.Key.Id,
+                    PosterUrl = m.Key.PosterUrl,
+                    Title = m.Key.Title,
+                    ReleaseDate = m.Key.ReleaseDate,
+                    Rating = m.Average(x => x.Rating)
+                })
+                .Take(50)
+                .ToListAsync();
 
+            return topRatedMovies;
+        }
 
 
     }

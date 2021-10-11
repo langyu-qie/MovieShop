@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -50,7 +51,23 @@ namespace Infrastructure.Data
      .UsingEntity<Dictionary<string, object>>("UserRole",
          u => u.HasOne<Role>().WithMany().HasForeignKey("RoleId"),
          r => r.HasOne<User>().WithMany().HasForeignKey("UserId"));
+
+            modelBuilder.Entity<MovieReviewResponseModel>(ConfigureMovieReviewResponseModel);
+            modelBuilder.Entity<UserReviewResponseModel>(ConfigureUserReviewResponseModel);
         }
+        private void ConfigureUserReviewResponseModel(EntityTypeBuilder<UserReviewResponseModel> builder)
+        {
+            builder.HasKey(urr => urr.UserId);
+        }
+
+
+        private void ConfigureMovieReviewResponseModel(EntityTypeBuilder<MovieReviewResponseModel> builder)
+        {
+            builder.HasKey(mrr => new { mrr.MovieId, mrr.UserId });
+        }
+
+
+
 
         private void ConfigureRole(EntityTypeBuilder<Role> builder)
         {
@@ -58,8 +75,6 @@ namespace Infrastructure.Data
             builder.HasKey(r => r.Id);
             builder.Property(r => r.Name).HasMaxLength(20);
         }
-
-
 
 
 

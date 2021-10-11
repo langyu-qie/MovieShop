@@ -18,6 +18,16 @@ namespace MovieShopAPI.Controllers
             _movieService = movieService;
         }
 
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetAllMovies([FromQuery] int pageSize = 30, [FromQuery] int page = 1,
+    string title = "")
+        {
+            var movies = await _movieService.GetMoviesByPagination(pageSize, page, title);
+            return Ok(movies);
+        }
+
+
 
         [Route("toprevenue")]
         [HttpGet]
@@ -38,6 +48,37 @@ namespace MovieShopAPI.Controllers
             //along with data you also need to return HTTP status code
         }
 
+        [HttpGet]
+        [Route("toprated")]
+        public async Task<IActionResult> GetTopRatedMovies()
+        {
+            var movies = await _movieService.GetTopRatedMovies();
+            return Ok(movies);
+        }
+
+
+        [HttpGet]
+        [Route("genre/{genreId:int}")]
+        public async Task<IActionResult> GetMoviesByGenre(int genreId, [FromQuery] int pageSize = 30, [FromQuery] int pageIndex = 1)
+        {
+            var movies = await _movieService.GetMoviesByGenre(genreId, pageSize, pageIndex);
+            return Ok(movies);
+        }
+
+
+
+
+
+        [HttpGet]
+        [Route("{id}/reviews")]
+        public async Task<IActionResult> GetMovieReviews(int id)
+        {
+            var reviews = await _movieService.GetReviewsForMovie(id);
+            return Ok(reviews);
+        }
+
+
+
 
         [Route("{id}")]
         [HttpGet]
@@ -49,19 +90,6 @@ namespace MovieShopAPI.Controllers
             return Ok(moviedetails);
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
