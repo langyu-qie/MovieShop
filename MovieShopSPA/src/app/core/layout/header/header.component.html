@@ -1,5 +1,6 @@
+
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" href="#">Movie Shop</a>
+    <a class="navbar-brand" href="#">Movie Shop<i class="fas fa-film"></i></a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,16 +14,47 @@
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+
+       <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Genres</a> 
           <div class="dropdown-menu" aria-labelledby="dropdownId">
             <a class="dropdown-item" href="#">Action 1</a>
             <a class="dropdown-item" href="#">Action 2</a>
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+     <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form>-->
+      <div class="navbar-collapse " *ngIf="isLoggedIn">
+        <ul class="navbar-nav ml-auto">
+    
+            <li class="nav-item dropdown text-capitalize">
+                <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
+                   {{user.given_name}} &nbsp;{{user.family_name}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" routerLink="/user/purchases"> Purchased Movies </a>
+                    <a class="dropdown-item" routerLink = "/user/favorites"> Favorite Movies </a>
+                    <a class="dropdown-item" > User Account </a>
+                    <a class="dropdown-item" (click)="logout()"> Logout </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse w-100" *ngIf="!isLoggedIn">
+        <ul class="navbar-nav ml-auto">
+            <li class="navbar-item pr-4">
+                <a class="btn btn-outline-primary" routerLink="account/login" > Login </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-primary" routerLink="account/register"> Register </a>
+            </li>
+        </ul>
+        
+    </div>
+
+
     </div>
   </nav>

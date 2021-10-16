@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +17,8 @@ import { CreateMovieComponent } from './admin/create-movie/create-movie.componen
 import { CreateCastComponent } from './admin/create-cast/create-cast.component';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { MovieCardComponent } from './shared/components/movie-card/movie-card.component';
+import { SharedModule } from './shared/shared.module';
+
 
 
 @NgModule({
@@ -27,20 +29,22 @@ import { MovieCardComponent } from './shared/components/movie-card/movie-card.co
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    FavoritesComponent,
-    PurchasesComponent,
     EditprofileComponent,
     TopratedComponent,
     CreateMovieComponent,
     CreateCastComponent,
     MovieDetailsComponent,
-    MovieCardComponent
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

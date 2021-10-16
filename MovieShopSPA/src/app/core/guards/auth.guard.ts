@@ -11,21 +11,20 @@ export class AuthGuard implements CanActivate, CanLoad {
   constructor(private authService: AuthenticationService, private router: Router) {
 
   }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+
+    return this.checkIsAuthenticated(state.url);
+  }
+
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
     //  return this.authService.isLoggedIn.pipe(take(1));
     const url = `/${route.path}`;
-    // console.log('inside canLoad');
-    // console.log(url);
-    // console.log(route);
-    return this.checkLogin(url);
-
-  }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-
-    return this.checkLogin(state.url);
+    return this.checkIsAuthenticated(url);
   }
 
-  checkLogin(url: string): Observable<boolean> {
+  
+  checkIsAuthenticated(url: string): Observable<boolean> {
     return this.authService.isLoggedIn.pipe(map(response => {
       if (response) {
         return true
